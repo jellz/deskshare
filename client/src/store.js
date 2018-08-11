@@ -2,20 +2,17 @@ const localStorage = window.localStorage;
 
 export const set = (key, value) => {
   console.log(key);
-  localStorage.setItem(key, value);
+  localStorage.setItem(key, JSON.stringify(value));
 }
 
 export const get = (key) => {
-  return localStorage.getItem(key);
+  return JSON.parse(localStorage.getItem(key));
 }
 
 export const remove = (key) => {
   localStorage.removeItem(key);
 }
 
-export const update = (key, value) => {
-  set(key, value);
-}
 
 export const isLoggedIn = () => {
   if(get('user') === null) {

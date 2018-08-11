@@ -1,16 +1,30 @@
 <template>
   <div class="home">
-    <SetupCard :votes="10" :name="'This is a name and it is char limit'" :author="'a person'" :images="['https://img00.deviantart.net/83f9/i/2010/066/6/d/epic_computer_setup_by_rokr424.jpg']" :description="'This is a cool description because its the character limitThis is a cool description because its the character limitThis is a cool description because its the character limit. memes memes memes mem'"/>
+    <SetupCard 
+        v-for="setup in setups"
+        :key="setup.id"
+        :votes="10"
+        :name="setup.title" 
+        :author="'a person'" 
+        :images="setup.images" 
+        :description="setup.description"/>
   </div>
 </template>
 
 <script>
 import SetupCard from '../components/SetupCard.vue';
+import { BASE } from "../api"
 
 export default {
-  name: 'home',
-  components: {
-    SetupCard,
-  }
+    name: 'home',
+    components: {
+        SetupCard,
+    },
+    data: () => ({
+        setups: []
+    }),
+    async mounted() {
+        this.setups = (await (await fetch(BASE+"/api/posts")).json()).data;
+    }
 }
 </script>

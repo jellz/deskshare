@@ -1,6 +1,6 @@
 const express = require('express');
 const config = require('./config.json');
-const router = express.Router();
+const router = module.exports = express.Router();
 
 const githubOAuth = require('github-oauth')({
     githubClient: config.githubClient,

@@ -2,3 +2,5 @@ node_modules/
 config.json
 jwtRS256.key
 jwtRS256.key.pub
+jwt.key
+jwt.key.pub

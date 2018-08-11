@@ -19,5 +19,6 @@ app.use(ejwt({secret: jwtKey, credentialsRequired: false}), async (req, res, nex
 });
 
 app.use('/api/auth', require('./routes/auth.js'));
+app.use('/api/posts', require('./routes/posts.js'));
 
 app.listen(port, () => console.log('deskshare-api listening on port ' + port));

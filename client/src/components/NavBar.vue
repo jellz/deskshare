@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import * as store from '../store';
+
 export default {
 
 }

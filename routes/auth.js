@@ -12,20 +12,19 @@ const githubOAuth = require('github-oauth')({
     scope: '' // optional, default scope is set to user
 });
 
-router.get('/', async (req, res) => {
-    res.send('Hello, world!');
-});
+router.get('/', githubOAuth.login);
 
-githubOAuth.addRoutes(router, async (err, token) => {
-    if (err) return console.error(err);
+router.get('/callback', githubOAuth.callback);
+
+githubOAuth.on("token", async token => {
     // this is a tale of a github token
     // it comes from a machine that runs the github api software
     // its probably a random string from the entropy the server somehow got
     // now its here and its gonna do some magic
     octokit.authenticate({
-        type: "oauth",
-        token
+        type: 'oauth',
+        token: token.access_token
     });
-    const user = await octokit.users.get({});
-    console.log(user);
+    const {data} = await octokit.users.get({});
+    console.log("Hi user", data);
 });

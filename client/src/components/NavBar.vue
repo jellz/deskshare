@@ -8,7 +8,7 @@
           <ui-button color="primary" :size="size" class="mysetups">My Setups</ui-button>
         </div>
         <div v-else>
-          <ui-button color="primary" :size="size">Login/Signup</ui-button>
+          <ui-button color="primary" :size="size" @click="login()">Login/Signup</ui-button>
         </div>
       </div>
   </ui-toolbar>
@@ -16,6 +16,7 @@
 
 <script>
 import * as store from '../store';
+import * as api from '../api';
 
 export default {
   data() {
@@ -25,6 +26,11 @@ export default {
   },
   mounted() {
     this.loggedIn = store.isLoggedIn();
+  },
+  methods: {
+    login() {
+      api.login();
+    }
   }
 }
 </script>

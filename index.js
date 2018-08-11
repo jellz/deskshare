@@ -14,6 +14,7 @@ app.use(require('morgan')('dev'));
 
 app.use(ejwt({secret: jwtKey, credentialsRequired: false}), async (req, res, next) => {
     const id = parseInt(req.user, 10);
+    if (!id) return;
     const user = await r.table('users').get(id).run();
     next();
 });

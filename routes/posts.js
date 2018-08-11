@@ -4,7 +4,7 @@ const r = require('../index.js').r;
 const { handleJoi } = require('../util.js');
 
 router.post('/', async (req, res) => {
-    if (!req.user) return;
+    if (!req.user) return res.sendStatus(401);
     if (!await handleJoi(require('../schemas/NewPost.js'), req, res)) return;
     await r.table('posts').insert({
         title: req.body.title,

@@ -8,9 +8,6 @@ export const login = () => {
     once=true;
     const jwt = event.data;
 
-    console.log(jwt);
-
     store.set('token', jwt);
-    location.reload();
   });
 }

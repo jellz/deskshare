@@ -4,7 +4,7 @@
     <ui-textbox label="Title" placeholder="Enter your title" v-model="postTitle" :maxlength="35" :invalid="postTitle.length > 16" error="The title may not be more than 35 characters"></ui-textbox> <!-- min 2 max 35 chars -->
     <ui-textbox help="Max 280 chars" label="Description" placeholder="Enter a short description" v-model="postDesc" :maxlength="280" :invalid="postDesc.length > 280" error="The title may not be more than 280 characters"></ui-textbox>
     <ui-fileupload color="primary" name="postImages" label="Select files" type="secondary" accept="image/*" multiple></ui-fileupload>
-    <br><ui-button color="primary" icon="send" icon-position="left" size="normal" @click="submit" :disabled="publishRequestInProgress">Submit</ui-button>
+    <br><ui-button color="primary" icon="send" icon-position="left" size="normal" @click="submit" :disabled="publishRequestInProgress" raised>Submit</ui-button>
 </div>
 </template>
 

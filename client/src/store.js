@@ -1,6 +1,5 @@
 
 export const set = (key, value) => {
-  console.log(key);
   localStorage.setItem(key, JSON.stringify(value));
 }
 

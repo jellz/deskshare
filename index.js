@@ -1,5 +1,5 @@
 const express = require('express');
-const ejwt = require("express-jwt");
+const ejwt = require('express-jwt');
 const fs = require('fs');
 // const config = require('./config.json');
 const app = express();
@@ -12,7 +12,7 @@ const jwtKey = module.exports.jwtKey = require('fs').readFileSync('jwt.key').toS
 app.use(express.json());
 app.use(require('morgan')('dev'));
 
-app.use(ejwt({secret: jwtKey, credentialsRequired: false}), async (req, res, next) => {
+app.use(ejwt({ secret: jwtKey, credentialsRequired: false }), async (req, res, next) => {
     const id = parseInt(req.user, 10);
     if (!id) return next();
     const user = await r.table('users').get(id).run();

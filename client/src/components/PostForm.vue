@@ -10,6 +10,7 @@
 <script>
 import * as store from "../store";
 import * as imsave from "imsave";
+import { BASE } from "../api";
 
 export default {
     data() {
@@ -34,7 +35,7 @@ export default {
                 urls.push(url);
             }
             // let primaryImage = ???? If we want to add a way for people to select which image shows on a thumbnail or something
-            const res = await fetch("http://localhost:3000/api/posts", {
+            const res = await fetch(BASE+"/api/posts", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

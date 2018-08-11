@@ -1,13 +1,13 @@
 <template>
   <div>
-    <img :src="'https://i.ytimg.com/vi/hhKSvQ5ZhlE/maxresdefault.jpg'" alt="" class="image">
+    <img :src="images[0]" alt="Setup image" class="image">
     <h2 class="name">{{ name }}</h2>
 
     <ui-fab
         color="primary"
         icon="thumb_up"
         tooltip-position="top center"
-        :tooltip="votes"
+        :tooltip="votes+''"
         size="small"
         class="like"
     ></ui-fab>

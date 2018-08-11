@@ -3,7 +3,7 @@
       <div slot="actions">
 
         <div v-if="loggedIn === true">
-          <ui-button color="primary" :size="size">Submit New Setup</ui-button>
+          <ui-button color="primary" :size="size" @click="newSetup()">Submit New Setup</ui-button>
 
           <ui-button color="primary" :size="size" class="mysetups">My Setups</ui-button>
         </div>
@@ -30,6 +30,9 @@ export default {
   methods: {
     login() {
       api.login();
+    },
+    newSetup() {
+      this.$router.push('/newPost');
     }
   }
 }

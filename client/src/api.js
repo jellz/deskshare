@@ -9,5 +9,6 @@ export const login = () => {
     const jwt = event.data;
 
     store.set('token', jwt);
+    location.reload();
   });
 }

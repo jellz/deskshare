@@ -14,4 +14,3 @@ export const remove = (key) => {
 export const isLoggedIn = () => {
   return !!get('token');
 }
-

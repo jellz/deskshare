@@ -17,7 +17,7 @@ export const update = (key, value) => {
 }
 
 export const isLoggedIn = () => {
-  if(get('user') === undefined) {
+  if(get('user') === null) {
     return false;
   }
 

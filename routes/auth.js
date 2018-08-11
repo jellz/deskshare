@@ -36,6 +36,6 @@ router.get('/callback', async (req, res) => {
     }
     const jwtToken = await jwt.sign(user.id, jwtKey);
     res.send(`
-        <script>opener.postMessage('${jwtToken}', 'http://localhost:8080'); close();</script>
+        <script>opener.postMessage('${jwtToken}', 'http://localhost:1373'); close();</script>
     `);
 });

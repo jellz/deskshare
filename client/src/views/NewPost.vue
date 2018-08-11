@@ -5,7 +5,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import PostForm from '@/components/PostForm.vue'
 
 export default {

@@ -12,6 +12,7 @@
     "express-jwt": "^5.3.1",
     "github-oauth": "^0.2.2",
     "helmet": "^3.13.0",
+    "joi": "^13.6.0",
     "jsonwebtoken": "^8.3.0",
     "morgan": "^1.9.0",
     "rethinkdbdash": "^2.3.31"

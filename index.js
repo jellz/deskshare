@@ -12,5 +12,6 @@ app.use(express.json());
 app.use(require('morgan')('dev'));
 
 app.use('/api/auth', require('./routes/auth.js'));
+app.use('/api/posts', require('./routes/posts.js'));
 
 app.listen(port, () => console.log('deskshare-api listening on port ' + port));

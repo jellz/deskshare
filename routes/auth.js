@@ -35,5 +35,7 @@ router.get('/callback', async (req, res) => {
         user = r.table("users").get(data.id).run();
     }
     const jwtToken = await jwt.sign(user.id, jwtKey);
-    res.json({jwt: jwtToken});
+    res.send(`
+        <script>opener.postMessage('${jwtToken}', 'http://localhost:8080'); close();</script>
+    `);
 });

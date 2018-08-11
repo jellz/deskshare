@@ -1,6 +1,5 @@
 <template>
 <div>
-      <form action="">
       <ui-textbox label="Title" placeholder="Enter your title" v-model="postTitle" :maxlength="35" :invalid="postTitle.length > 16" error="The title may not be more than 35 characters"></ui-textbox> <!-- min 2 max 35 chars -->
       <ui-textbox help="Max 280 chars" label="Description" placeholder="Enter a short description" v-model="postDesc" :maxlength="280" :invalid="postDesc.length > 16" error="The title may not be more than 280 characters"></ui-textbox>
       <ui-fileupload color="primary" name="postImages"></ui-fileupload>
@@ -17,7 +16,6 @@
                   >
                   Publish setup for the world to see?
       </ui-confirm>
-      </form>
 </div>
 </template>
 

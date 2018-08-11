@@ -40,6 +40,8 @@ div {
 
   border-radius: 10px;
 
+  display: block;
+
   .image {
     width: 100%;
     height: auto;

@@ -14,4 +14,5 @@ router.post('/', async (req, res) => {
         upvotes: 0,
         hidden: false
     });
+    res.sendStatus(200);
 });

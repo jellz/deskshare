@@ -1,5 +1,5 @@
 <template>
-  <ui-toolbar brand="DeskShare" title="">
+  <ui-toolbar brand="DeskShare" title="" removeNavIcon="true">
       <div slot="actions">
 
         <div v-if="loggedIn === true">

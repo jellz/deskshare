@@ -1,6 +1,7 @@
 const express = require('express');
 const ejwt = require('express-jwt');
 const fs = require('fs');
+const cors = require('cors');
 // const config = require('./config.json');
 const app = express();
 
@@ -10,6 +11,7 @@ const r = module.exports.r = require('rethinkdbdash')({ db: 'deskshare' });
 const jwtKey = module.exports.jwtKey = require('fs').readFileSync('jwt.key').toString();
 
 app.use(express.json());
+app.use(cors({origin: "http://localhost:1373"}))
 app.use(require('morgan')('dev'));
 
 app.use(ejwt({ secret: jwtKey, credentialsRequired: false }), async (req, res, next) => {

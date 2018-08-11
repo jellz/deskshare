@@ -16,3 +16,7 @@ router.post('/', async (req, res) => {
     });
     res.sendStatus(200);
 });
+
+router.get('/', async (req, res) => {
+    res.json({data: await r.table('posts').run()})
+});

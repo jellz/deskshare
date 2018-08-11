@@ -13,8 +13,9 @@ app.use(express.json());
 app.use(require('morgan')('dev'));
 
 app.use(ejwt({secret: jwtKey}), async (req, res, next) => {
-    const id = req.user;
-    req.user = await r.table("users").get(id).run();
+    const id = parseInt(req.user, 10);
+    const user = await r.table('users').get(id).run();
+    next();
 });
 
 app.use('/api/auth', require('./routes/auth.js'));

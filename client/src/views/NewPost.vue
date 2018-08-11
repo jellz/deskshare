@@ -1,7 +1,5 @@
 <template>
-  <div class="post-form">
     <PostForm />
-  </div>
 </template>
 
 <script>

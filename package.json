@@ -5,5 +5,11 @@
   "main": "index.js",
   "repository": "git@github.com:jellz/DeskShare",
   "author": "Team LetsGetThatKeyboard™",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-jwt": "^5.3.1",
+    "helmet": "^3.13.0",
+    "jsonwebtoken": "^8.3.0"
+  }
 }

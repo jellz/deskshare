@@ -15,3 +15,12 @@ export const remove = (key) => {
 export const update = (key, value) => {
   set(key, value);
 }
+
+export const isLoggedIn = () => {
+  if(get('user') === undefined) {
+    return false;
+  }
+
+  return true;
+}
+

@@ -9,6 +9,7 @@
   "dependencies": {
     "express": "^4.16.3",
     "express-jwt": "^5.3.1",
+    "github-oauth": "^0.2.2",
     "helmet": "^3.13.0",
     "jsonwebtoken": "^8.3.0",
     "morgan": "^1.9.0",

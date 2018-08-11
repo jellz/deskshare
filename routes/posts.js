@@ -9,6 +9,9 @@ router.post('/', async (req, res) => {
     await r.table('posts').insert({
         title: req.body.title,
         description: req.body.description,
-        images: req.body.images
+        images: req.body.images,
+        authorId: req.user.id,
+        upvotes: 0,
+        hidden: false
     });
 });

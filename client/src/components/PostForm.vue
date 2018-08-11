@@ -1,9 +1,10 @@
 <template>
 <div>
+    <ui-snackbar v-if="donePublishing">Post published</ui-snackbar>
     <ui-textbox label="Title" placeholder="Enter your title" v-model="postTitle" :maxlength="35" :invalid="postTitle.length > 16" error="The title may not be more than 35 characters"></ui-textbox> <!-- min 2 max 35 chars -->
     <ui-textbox help="Max 280 chars" label="Description" placeholder="Enter a short description" v-model="postDesc" :maxlength="280" :invalid="postDesc.length > 280" error="The title may not be more than 280 characters"></ui-textbox>
     <ui-fileupload color="primary" name="postImages" label="Select files" type="secondary" accept="image/*" multiple></ui-fileupload>
-    <br><ui-button color="primary" icon="send" icon-position="left" size="normal" @click="submit">Submit</ui-button>
+    <br><ui-button color="primary" icon="send" icon-position="left" size="normal" @click="submit" :disabled="publishRequestInProgress">Submit</ui-button>
 </div>
 </template>
 
@@ -17,7 +18,8 @@ export default {
             postTitle: '',
             postDesc: '',
             confirmResult: '',
-            publishRequestInProgress: false
+            publishRequestInProgress: false,
+            donePublishing: false,
         };
     },
     mounted() {
@@ -27,7 +29,7 @@ export default {
         async submit() {
             this.publishRequestInProgress = true;
             const input = document.getElementsByClassName("ui-fileupload__input")[0];
-            // if (input.files.length > 10) return alert("too many files"); // 15 is too much (^; 
+            // if (input.files.length > 10) return alert("too many files"); // 15 is too much (^;
             let urls = [];
             for(let file of input.files) {
                 const url = await imsave("82dc9da3f843ede", file);
@@ -46,6 +48,10 @@ export default {
                     images: urls
                 })
             });
+
+            this.donePublishing = true;
+
+            this.$router.push('/');
         }
     }
 };

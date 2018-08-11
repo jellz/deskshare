@@ -26,4 +26,8 @@ export default {
 html {
     font-size: 100%;
 }
+
+body {
+  background-color: #f9f9f9;
+}
 </style>

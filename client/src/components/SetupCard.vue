@@ -1,7 +1,19 @@
 <template>
   <div>
-    <img :src="images[0]" alt="" class="image">
+    <img :src="'https://i.ytimg.com/vi/hhKSvQ5ZhlE/maxresdefault.jpg'" alt="" class="image">
     <h2 class="name">{{ name }}</h2>
+
+    <ui-fab
+        color="primary"
+        icon="thumb_up"
+        tooltip-position="top left"
+        :tooltip="votes"
+        :size="small"
+        class="like"
+    ></ui-fab>
+
+
+    <p class="description">{{ description }}</p>
   </div>
 </template>
 
@@ -21,25 +33,47 @@ export default {
 div {
   width: 20%;
   height: 10%;
-  background-color: #f7fcff;
+  background-color: white;
 
-  border-radius: 7px;
+  margin-left: 10px;
+  margin-top: 10px;
 
-  .name {
-    color: black;
-    font-family: 'Raleway';
-
-    font-weight: bold;
-    width: 100%;
-    background-color: #f7f7f7;
-  }
+  border-radius: 10px;
 
   .image {
-    width: 90%;
-    border-radius: 6px;
-    margin-top: 2%;
-    margin-right: 5%;
-    margin-left: 5%;
+    width: 100%;
+  }
+
+  .image-darker {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 15%;
+    height: 5%;
+    z-index: 1000;
+    position: absolute;
+    border-radius: 0;
+    top: 0;
+  }
+
+  .name {
+    font-family: 'Raleway';
+    font-weight: bold;
+  }
+
+  .description {
+    font-family: 'Raleway';
+  }
+
+  .user {
+    background-color: white;
+    font-family: 'Raleway';
+
+    position: absolute;
+    top: 10%;
+  }
+
+  .like {
+    position: absolute;
+    top: 20%;
   }
 }
 </style>

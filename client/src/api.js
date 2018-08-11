@@ -1,3 +1,5 @@
+import * as store from './store';
+
 export const login = () => {
   const win = window.open('http://localhost:3000/api/auth/login');
   let once;
@@ -5,7 +7,10 @@ export const login = () => {
     if (once || event.origin !== "http://localhost:3000") return;
     once=true;
     const jwt = event.data;
-    console.log("client has jwt", jwt);
-    return jwt;
+
+    console.log(jwt);
+
+    store.set('token', jwt);
+    location.reload();
   });
 }

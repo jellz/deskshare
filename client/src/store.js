@@ -1,6 +1,7 @@
 const localStorage = window.localStorage;
 
 export const set = (key, value) => {
+  console.log(key);
   localStorage.setItem(key, value);
 }
 

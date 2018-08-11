@@ -6,9 +6,9 @@
     <ui-fab
         color="primary"
         icon="thumb_up"
-        tooltip-position="top left"
+        tooltip-position="top center"
         :tooltip="votes"
-        :size="small"
+        size="small"
         class="like"
     ></ui-fab>
 
@@ -42,6 +42,7 @@ div {
 
   .image {
     width: 100%;
+    height: auto;
   }
 
   .image-darker {
@@ -72,8 +73,9 @@ div {
   }
 
   .like {
-    position: absolute;
-    top: 20%;
+    float: right;
+    margin-top: -85%;
+    margin-right: 1%;
   }
 }
 </style>

@@ -1,3 +1,5 @@
+const Joi = require('joi');
+
 exports.handleJoi = (schema, req, res) => {
     const result = Joi.validate(req.body, schema);
     if (result.error) {

@@ -1,0 +1,9 @@
+{
+  "name": "DeskShare",
+  "version": "1.0.0",
+  "description": "Share your desktop environment",
+  "main": "index.js",
+  "repository": "git@github.com:jellz/DeskShare",
+  "author": "Team LetsGetThatKeyboard™",
+  "license": "MIT"
+}

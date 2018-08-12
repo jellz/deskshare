@@ -6,7 +6,7 @@
         <div v-if="loggedIn">
           <ui-button color="primary" @click="newSetup()">Submit Your Setup</ui-button>
 
-          <ui-button color="primary" class="mysetups">My Setups</ui-button>
+          <ui-button color="primary" class="mysetups" @click="mySetups()">My Setups</ui-button>
         </div>
         <div v-else>
           <ui-button color="primary" @click="login()">Login</ui-button>

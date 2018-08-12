@@ -41,7 +41,8 @@ router.post('/:id/upvotes', async (req, res) => {
         post.upvotes.push(parseInt(req.user));
     }
     await r.table('posts').update(post).run();
-    res.json({ upvotes: post.upvotes });
+    if (post.upvotes.includes(parseInt(req.user))) return res.status(201).json({ upvotes: post.upvotes });
+    return res.json({ upvotes: post.upvotes });
 });
 
 router.get('/', async (req, res) => {

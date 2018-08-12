@@ -18,7 +18,8 @@
     "morgan": "^1.9.0",
     "node-fetch": "^2.2.0",
     "query-string": "^6.1.0",
-    "rethinkdbdash": "^2.3.31"
+    "rethinkdbdash": "^2.3.31",
+    "vue-carousel": "^0.10.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.3"

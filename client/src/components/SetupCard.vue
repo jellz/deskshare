@@ -4,11 +4,11 @@
     <h2 class="name">{{ name }}</h2>
 
     <ui-fab
-        color="primary"
+        :color="hasLiked ? 'primary' : 'green'"
         icon="thumb_up"
         tooltip-position="top center"
-        @click="upvote()"
-        :tooltip="votes.length+''"
+        @click="upvote"
+        :tooltip="data_votes.length+''"
         size="small"
         class="like"
     ></ui-fab>
@@ -31,8 +31,16 @@ export default {
     votes: Array,
     id: Number,
   },
+  data() {
+    return {
+      color: 'primary',
+      hasLiked: false,
+      user_id: 0,
+      data_votes: []
+    };
+  },
   methods: {
-    upvote: async () => {
+    async upvote() {
       const id = parseInt(this.id);
       const res = await fetch(BASE+`/api/posts/${this.id}/upvotes`, {
           method: "POST",
@@ -42,7 +50,33 @@ export default {
           }
       });
 
-      console.log(await res.json());
+      const data = await res.json();
+
+      console.log(data);
+
+      if(data.upvotes.includes(this.user_id)) {
+        this.hasLiked = true;
+        this.data_votes = data.upvotes;
+      } else {
+        this.hasLiked = false;
+        this.data_votes = data.upvotes;
+      }
+    }
+  },
+  async mounted() {
+    this.data_votes = this.votes;
+    const res = await fetch(BASE+"/api/users/@me", {
+        headers: {
+            Authorization: `Bearer ${store.get("token")}`
+        }
+    });
+    const resData = await res.json();
+    const id = resData.me.id;
+
+    this.user_id = id;
+
+    if(this.votes.includes(id)) {
+      this.hasLiked = true;
     }
   }
 }

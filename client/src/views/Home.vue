@@ -15,7 +15,8 @@
         :author="'a person'"
         :images="setup.images"
         :description="setup.description"
-        :id="setup.id"/>
+        :id="setup.id"
+        :updateList="updateList"/>
   </div>
 </template>
 
@@ -36,9 +37,9 @@ export default {
 
         const compare = (obj1, obj2) => {
           if(obj1.upvotes < obj2.upvotes) {
-            return -1;
-          } else if (obj1.upvotes > obj2.upvotes) {
             return 1;
+          } else if (obj1.upvotes > obj2.upvotes) {
+            return -1;
           }
 
           return 0;
@@ -47,6 +48,25 @@ export default {
         setups.sort(compare);
 
         this.setups = setups;
+    },
+    methods: {
+      async updateList() {
+        const setups = (await (await fetch(BASE+"/api/posts")).json()).posts;
+
+        const compare = (obj1, obj2) => {
+          if(obj1.upvotes < obj2.upvotes) {
+            return 1;
+          } else if (obj1.upvotes > obj2.upvotes) {
+            return -1;
+          }
+
+          return 0;
+        }
+
+        setups.sort(compare);
+
+        this.setups = setups;
+      }
     }
 }
 </script>

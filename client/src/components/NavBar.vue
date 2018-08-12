@@ -1,6 +1,6 @@
 <template>
   <ui-toolbar brand="DeskShare" title="" :removeNavIcon="true">
-      <div slot="brand" @click="goHome()" class="brand"><img src="/logo.png" alt="" style="height: 30px;"></div>
+      <div slot="brand" @click="goHome()" class="brand"><img src="/logo.png" alt=""></div>
       <div slot="actions">
 
         <div v-if="loggedIn">
@@ -48,7 +48,11 @@ export default {
     margin: 0.5rem;
   }
   .brand {
-    cursor: pointer;
+    cursor:pointer;
+    margin: auto;
+    img {
+      height: 1.5rem;
+    }
   }
   padding: 2rem;
 }

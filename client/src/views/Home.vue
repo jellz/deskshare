@@ -31,6 +31,6 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-    margin-top: 2rem;
+    margin-top: 2rem; // avoid the fab touching the navbar
 }
 </style>

@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
         title: req.body.title,
         description: req.body.description,
         images: req.body.images,
-        authorId: req.user.id,
+        authorId: parseInt(req.user),
         upvotes: 0,
         hidden: false
     });
@@ -22,6 +22,7 @@ router.delete('/:id', async (req, res) => {
     if (!req.params.id) return res.sendStatus(400);
     const post = await r.table('posts').get(req.params.id).run();
     if (!post) return res.sendStatus(404);
+    console.log(req.user);
     if (req.user.id !== post.authorId) return res.sendStatus(403);
     await r.table('posts').get(req.params.id).delete().run();
     res.sendStatus(200);

@@ -24,7 +24,21 @@ export default {
         setups: []
     }),
     async mounted() {
-        this.setups = (await (await fetch(BASE+"/api/posts")).json()).posts;
+        const setups = (await (await fetch(BASE+"/api/posts")).json()).posts;
+
+        const compare = (obj1, obj2) => {
+          if(obj1.upvotes < obj2.upvotes) {
+            return -1;
+          } else if (obj1.upvotes > obj2.upvotes) {
+            return 1;
+          }
+
+          return 0;
+        }
+
+        setups.sort(compare);
+
+        this.setups = setups;
     }
 }
 </script>

@@ -11,7 +11,6 @@ import * as api from './api';
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'hash',
   routes: [
     {
       path: '/',

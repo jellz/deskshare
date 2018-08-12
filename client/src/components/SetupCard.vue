@@ -1,6 +1,10 @@
 <template>
   <div>
-    <img :src="images[0]" alt="Setup image" class="image">
+    <carousel perPage=1>
+        <slide v-for="img of images" :key="img">
+            <img :src="img" alt="Setup image" class="image">
+        </slide>
+    </carousel>
     <h2 class="name">{{ name }}</h2>
 
     <ui-fab

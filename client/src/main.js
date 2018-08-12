@@ -4,7 +4,9 @@ import router from './router'
 
 import KeenUI from 'keen-ui';
 import 'keen-ui/dist/keen-ui.css';
-
+import VueCarousel from 'vue-carousel';
+ 
+Vue.use(VueCarousel);
 Vue.use(KeenUI);
 
 Vue.config.productionTip = false

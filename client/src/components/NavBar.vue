@@ -1,5 +1,6 @@
 <template>
   <ui-toolbar brand="DeskShare" title="" :removeNavIcon="true">
+      <div slot="brand" @click="goHome()" class="brand"><img src="/logo.png" alt="" style="height: 30px;"></div>
       <div slot="actions">
 
         <div v-if="loggedIn">
@@ -33,10 +34,23 @@ export default {
     },
     newSetup() {
       this.$router.push('/newPost');
+    },
+    goHome() {
+      this.$router.push('/');
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.ui-toolbar {
+  .ui-button {
+    margin: 0.5rem;
+  }
+  .brand {
+    cursor: pointer;
+  }
+  padding: 2rem;
+}
+
 </style>

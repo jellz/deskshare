@@ -1,10 +1,10 @@
 <template>
-<div>
+<div class="form-display">
     <ui-snackbar v-if="donePublishing">Post published</ui-snackbar>
     <ui-textbox label="Title" placeholder="Enter your title" v-model="postTitle" :maxlength="35" :invalid="postTitle.length > 16" error="The title may not be more than 35 characters"></ui-textbox> <!-- min 2 max 35 chars -->
     <ui-textbox help="Max 280 chars" label="Description" placeholder="Enter a short description" v-model="postDesc" :maxlength="280" :invalid="postDesc.length > 280" error="The title may not be more than 280 characters"></ui-textbox>
     <ui-fileupload color="primary" name="postImages" label="Select files" type="secondary" accept="image/*" multiple></ui-fileupload>
-    <br><ui-button color="primary" icon="send" icon-position="left" size="normal" @click="submit" :disabled="publishRequestInProgress" raised>Submit</ui-button>
+    <br><ui-button color="primary" icon="send" icon-position="left" size="normal" @click="submit" :loading="publishRequestInProgress" raised>Submit</ui-button>
 </div>
 </template>
 
@@ -59,12 +59,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div {
-    width: 50%;
-    height: 10%;
-    background-color: white;
-    margin-left: 20%;
-    margin-top: 30px;
-    border-radius: 10px;
+.form-display {
+  margin-top: 1rem;
+  padding: 3rem;
+  background-color: white;
+  border-radius: 1rem;
+  .ui-fileupload {
+    margin-bottom: 1rem;
+  }
 }
 </style>

@@ -20,10 +20,9 @@ export default {
         }
       });
 
-      console.log(await res.json().me.id);
-      const posts = await (await fetch(`/api/users/${await res.json().me.id}/posts`)).json();
+      const posts = await fetch(`${BASE}/api/users/${(await res.json()).me.id}/posts`);
 
-      console.log(posts);
+      console.log(await posts.text());
     }
 }
 </script>

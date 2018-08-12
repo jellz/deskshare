@@ -10,11 +10,12 @@
     <SetupCard
         v-for="setup in setups"
         :key="setup.id"
-        :votes="10"
+        :votes="setup.upvotes"
         :name="setup.title"
         :author="'a person'"
         :images="setup.images"
-        :description="setup.description"/>
+        :description="setup.description"
+        :id="setup.id"/>
   </div>
 </template>
 

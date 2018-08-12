@@ -32,7 +32,6 @@ export default {
 <style lang="scss" scoped>
 div {
   width: 20%;
-  height: 10%;
   background-color: white;
 
   margin-left: 10px;
@@ -75,9 +74,8 @@ div {
   }
 
   .like {
-    float: right;
-    margin-top: -85%;
-    margin-right: 1%;
+    position: absolute;
+    right: 80%;
   }
 }
 </style>

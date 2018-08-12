@@ -2,15 +2,18 @@ const express = require('express');
 const config = require('../config.json');
 const jwt = require('jsonwebtoken');
 const { r, jwtKey } = require('../');
-const snek = require('snekfetch');
+const fetch = require('node-fetch');
 const router = module.exports = express.Router();
-const octokit = require('@octokit/rest')()
+const octokit = require('@octokit/rest')();
+const queryString = require('query-string');
 
 router.get('/login', (req, res) => res.redirect(`https://github.com/login/oauth/authorize?client_id=${config.githubClient}&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fauth%2Fcallback`))
 
 router.get('/callback', async (req, res) => {
-    const ares = await snek.get(`https://github.com/login/oauth/access_token?client_id=${config.githubClient}&client_secret=${config.githubSecret}&code=${encodeURIComponent(req.query.code)}`);
-    const token = ares.body.access_token;
+    const ares = await fetch(`https://github.com/login/oauth/access_token?client_id=${config.githubClient}&client_secret=${config.githubSecret}&code=${encodeURIComponent(req.query.code)}`);
+    const json = queryString.parse(await ares.text());
+    const token = json.access_token;
+
     // this is a tale of a github token
     // it comes from a machine that runs the github api software
     // its probably a random string from the entropy the server somehow got
@@ -22,7 +25,7 @@ router.get('/callback', async (req, res) => {
     const { data } = await octokit.users.get({});
     let user = await r.table('users').get(data.id).run();
     if (!!user) {
-        // user already exists, we do nothing ig uess 
+        // user already exists, we do nothing i guess 
         // idk maybe daniel will get crazy and make it update stuff
         // UPDATE from daniel: no, i dont have anything to do here
     } else {

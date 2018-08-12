@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const RateLimit = require('express-rate-limit');
 
 exports.handleJoi = (schema, req, res) => {
     const result = Joi.validate(req.body, schema);
@@ -12,3 +13,9 @@ exports.handleJoi = (schema, req, res) => {
         return false;
     } else return true;
 }
+
+exports.rateLimiter = new RateLimit({
+    windowMs: 2000,
+    max: 5,
+    delayMs: 0
+});

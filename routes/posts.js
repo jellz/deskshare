@@ -1,7 +1,9 @@
 const express = require('express');
 const router = module.exports = express.Router();
 const r = require('../index.js').r;
-const { handleJoi } = require('../util.js');
+const { handleJoi, rateLimiter } = require('../util.js');
+
+router.use(rateLimiter);
 
 router.post('/', async (req, res) => {
     if (!req.user) return res.sendStatus(401);

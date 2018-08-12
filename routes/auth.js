@@ -40,6 +40,6 @@ router.get('/callback', async (req, res) => {
     }
     const jwtToken = await jwt.sign(user.id, jwtKey);
     res.send(`
-        <script>opener.postMessage('${jwtToken}', 'https://deskshare.jellz.fun'); close();</script>
+        <script>opener.postMessage('${jwtToken}', 'https://deskshare.ronthecookie.me'); close();</script>
     `);
 });

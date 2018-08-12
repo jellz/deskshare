@@ -13,7 +13,7 @@ const jwtKey = module.exports.jwtKey = require('fs').readFileSync('jwt.key').toS
 app.enable('trust proxy');
 
 app.use(express.json());
-app.use(cors({ origin: 'https://deskshare.jellz.fun' }));
+app.use(cors({ origin: 'https://deskshare.ronthecookie.me' }));
 app.use(require('morgan')('dev'));
 
 app.use(ejwt({ secret: jwtKey, credentialsRequired: false }), async (req, res, next) => {

@@ -1,5 +1,14 @@
 <template>
-  <h1>hi</h1>
+    <div>
+        <SetupCard
+            v-for="setup in setups"
+            :key="setup.id"
+            :votes="setup.upvotes.length"
+            :name="setup.title"
+            :author="'a person'"
+            :images="setup.images"
+            :description="setup.description"/>
+    </div>
 </template>
 
 <script>
@@ -8,22 +17,22 @@ import { BASE } from "../api"
 import * as store from '../store';
 
 export default {
-    name: 'home',
+    name: 'MySetups',
     components: {
         SetupCard,
     },
-
+    data: () => ({
+        setups: []
+    }),
     async mounted() {
-      const res = await fetch(BASE+"/api/users/@me", {
-        headers: {
-            Authorization: `Bearer ${store.get("token")}`
-        }
-      });
-
-      console.log(await res.json().me.id);
-      const posts = await (await fetch(`/api/users/${await res.json().me.id}/posts`)).json();
-
-      console.log(posts);
+        const res = await fetch(BASE+"/api/users/@me", {
+            headers: {
+                Authorization: `Bearer ${store.get("token")}`
+            }
+        });
+        const resData = await res.json();
+        const posts = await (await fetch(`${BASE}/api/users/${resData.me.id}/posts`)).json();
+        this.setups = posts.posts;
     }
 }
 </script>

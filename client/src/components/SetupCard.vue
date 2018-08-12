@@ -7,7 +7,8 @@
         color="primary"
         icon="thumb_up"
         tooltip-position="top center"
-        :tooltip="votes+''"
+        @click="upvote()"
+        :tooltip="votes.length+''"
         size="small"
         class="like"
     ></ui-fab>
@@ -18,13 +19,31 @@
 </template>
 
 <script>
+import { BASE } from "../api";
+import * as store from '../store';
+
 export default {
   props: {
     name: String,
     description: String,
     author: String,
     images: Array,
-    votes: Number
+    votes: Array,
+    id: Number,
+  },
+  methods: {
+    upvote: async () => {
+      const id = parseInt(this.id);
+      const res = await fetch(BASE+`/api/posts/${this.id}/upvotes`, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${store.get("token")}`
+          }
+      });
+
+      console.log(await res.json());
+    }
   }
 }
 </script>

@@ -18,5 +18,5 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-    res.json({data: await r.table('posts').run()})
+    res.json({ posts: await r.table('posts').run() });
 });

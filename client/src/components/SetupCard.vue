@@ -7,7 +7,7 @@
         :color="hasLiked ? 'primary' : 'green'"
         icon="thumb_up"
         tooltip-position="top center"
-        @click="upvote()"
+        @click="upvote"
         :tooltip="data_votes.length+''"
         size="small"
         class="like"

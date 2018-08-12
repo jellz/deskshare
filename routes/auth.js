@@ -11,9 +11,9 @@ router.get('/login', (req, res) => res.redirect(`https://github.com/login/oauth/
 
 router.get('/callback', async (req, res) => {
     const ares = await fetch(`https://github.com/login/oauth/access_token?client_id=${config.githubClient}&client_secret=${config.githubSecret}&code=${encodeURIComponent(req.query.code)}`);
-    const json = queryString.parse(await ares.text());
+    const json = await ares.json();
     const token = json.access_token;
-
+    if (!token) console.error("Did not get token from github", json);
     // this is a tale of a github token
     // it comes from a machine that runs the github api software
     // its probably a random string from the entropy the server somehow got

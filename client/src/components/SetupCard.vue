@@ -45,6 +45,7 @@ export default {
   },
   methods: {
     async upvote() {
+      if(!store.isLoggedIn()) return;
       const id = parseInt(this.id);
       const res = await fetch(BASE+`/api/posts/${this.id}/upvotes`, {
           method: "POST",

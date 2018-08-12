@@ -24,6 +24,7 @@ router.get('/callback', async (req, res) => {
     if (!!user) {
         // user already exists, we do nothing ig uess 
         // idk maybe daniel will get crazy and make it update stuff
+        // UPDATE from daniel: no, i dont have anything to do here
     } else {
         // new user
         await r.table('users').insert({

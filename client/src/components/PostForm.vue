@@ -58,7 +58,9 @@ export default {
                 this.donePublishing = true;
 
                 this.$router.push('/');
-            } 
+            } else {
+                this.badForm = true;
+                this.publishRequestInProgress = false;
         }
     }
 };

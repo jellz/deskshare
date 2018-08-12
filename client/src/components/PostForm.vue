@@ -40,7 +40,7 @@ export default {
                 urls.push(url);
             }
             // let primaryImage = ???? If we want to add a way for people to select which image shows on a thumbnail or something
-            if (this.postTitle.length <= 35 && this.postDesc.length <= 280) {
+            if (this.postTitle.length <= 35 && this.postDesc.length <= 280 && this.postTitle && this.postDesc) {
                 this.publishRequestInProgress = true;
                 const res = await fetch(BASE+"/api/posts", {
                     method: "POST",

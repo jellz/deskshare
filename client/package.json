@@ -10,6 +10,7 @@
     "imsave": "^2.0.0",
     "keen-ui": "^1.0.1",
     "vue": "^2.5.17",
+    "vue-carousel": "^0.10.0",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

@@ -1,5 +1,5 @@
 import * as store from './store';
-export const BASE = "http://localhost:3000"
+export const BASE = "https://dsapi.jellz.fun"
 
 export const login = () => {
   const win = window.open(BASE+'/api/auth/login');

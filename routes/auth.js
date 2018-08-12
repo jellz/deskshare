@@ -7,7 +7,7 @@ const router = module.exports = express.Router();
 const octokit = require('@octokit/rest')();
 const queryString = require('query-string');
 
-router.get('/login', (req, res) => res.redirect(`https://github.com/login/oauth/authorize?client_id=${config.githubClient}&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fauth%2Fcallback`))
+router.get('/login', (req, res) => res.redirect(`https://github.com/login/oauth/authorize?client_id=${config.githubClient}&redirect_uri=https%3A%2F%2Fdsapi.jellz.fun%2Fapi%2Fauth%2Fcallback`))
 
 router.get('/callback', async (req, res) => {
     const ares = await fetch(`https://github.com/login/oauth/access_token?client_id=${config.githubClient}&client_secret=${config.githubSecret}&code=${encodeURIComponent(req.query.code)}`);
@@ -40,6 +40,6 @@ router.get('/callback', async (req, res) => {
     }
     const jwtToken = await jwt.sign(user.id, jwtKey);
     res.send(`
-        <script>opener.postMessage('${jwtToken}', 'http://localhost:1373'); close();</script>
+        <script>opener.postMessage('${jwtToken}', 'https://deskshare.jellz.fun'); close();</script>
     `);
 });

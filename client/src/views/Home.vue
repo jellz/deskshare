@@ -1,12 +1,12 @@
 <template>
   <div class="home">
-    <SetupCard 
+    <SetupCard
         v-for="setup in setups"
         :key="setup.id"
         :votes="10"
-        :name="setup.title" 
-        :author="'a person'" 
-        :images="setup.images" 
+        :name="setup.title"
+        :author="'a person'"
+        :images="setup.images"
         :description="setup.description"/>
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
         setups: []
     }),
     async mounted() {
-        this.setups = (await (await fetch(BASE+"/api/posts")).json()).data;
+        this.setups = (await (await fetch(BASE+"/api/posts")).json()).posts;
     }
 }
 </script>

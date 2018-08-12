@@ -12,11 +12,5 @@ export const remove = (key) => {
 }
 
 export const isLoggedIn = () => {
-  const user = get('token');
-
-  if(user === null || user === undefined) {
-    return false;
-  }
-
-  return true;
+  return !!get('token');
 }

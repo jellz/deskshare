@@ -2,11 +2,11 @@ const express = require('express');
 const config = require('../config.json');
 const jwt = require('jsonwebtoken');
 const { r, jwtKey } = require('../');
-const snek = require("snekfetch");
+const snek = require('snekfetch');
 const router = module.exports = express.Router();
 const octokit = require('@octokit/rest')()
 
-router.get("/login", (req, res) => res.redirect(`https://github.com/login/oauth/authorize?client_id=${config.githubClient}&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fauth%2Fcallback`))
+router.get('/login', (req, res) => res.redirect(`https://github.com/login/oauth/authorize?client_id=${config.githubClient}&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fauth%2Fcallback`))
 
 router.get('/callback', async (req, res) => {
     const ares = await snek.get(`https://github.com/login/oauth/access_token?client_id=${config.githubClient}&client_secret=${config.githubSecret}&code=${encodeURIComponent(req.query.code)}`);
@@ -20,19 +20,19 @@ router.get('/callback', async (req, res) => {
         token: token
     });
     const { data } = await octokit.users.get({});
-    let user = await r.table("users").get(data.id).run();
+    let user = await r.table('users').get(data.id).run();
     if (!!user) {
         // user already exists, we do nothing ig uess 
         // idk maybe daniel will get crazy and make it update stuff
     } else {
         // new user
-        await r.table("users").insert({
+        await r.table('users').insert({
             id: data.id,
             username: data.login,
             avatar: data.avatar_url,
             createdAt: Date.now()
         }).run();
-        user = r.table("users").get(data.id).run();
+        user = r.table('users').get(data.id).run();
     }
     const jwtToken = await jwt.sign(user.id, jwtKey);
     res.send(`

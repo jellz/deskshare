@@ -17,6 +17,16 @@ router.post('/', async (req, res) => {
     res.sendStatus(200);
 });
 
+router.delete('/:id', async (req, res) => {
+    if (!req.user) return res.sendStatus(401);
+    if (!req.params.id) return res.sendStatus(400);
+    const post = await r.table('posts').get(req.params.id).run();
+    if (!post) return res.sendStatus(404);
+    if (req.user.id !== post.authorId) return res.sendStatus(403);
+    await r.table('posts').get(req.params.id).delete().run();
+    res.sendStatus(200);
+});
+
 router.get('/', async (req, res) => {
     res.json({ posts: await r.table('posts').run() });
 });

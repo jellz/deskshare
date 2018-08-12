@@ -25,7 +25,7 @@ router.get('/callback', async (req, res) => {
     const { data } = await octokit.users.get({});
     let user = await r.table('users').get(data.id).run();
     if (!!user) {
-        // user already exists, we do nothing i guess 
+        // user already exists, we do nothing i guess
         // idk maybe daniel will get crazy and make it update stuff
         // UPDATE from daniel: no, i dont have anything to do here
     } else {

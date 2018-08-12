@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Home from './views/Home.vue';
 import NewPost from './views/NewPost.vue';
+import MySetups from './views/MySetups.vue';
 
 import * as store from './store';
 import * as api from './api';
@@ -19,6 +20,13 @@ const router = new Router({
     {
       path: '/newPost',
       component: NewPost,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/myPosts',
+      component: MySetups,
       meta: {
         requiresAuth: true
       }

@@ -39,7 +39,7 @@ div {
 
   border-radius: 10px;
 
-  display: block;
+  display: inline-block;
 
   .image {
     width: 100%;
@@ -74,8 +74,7 @@ div {
   }
 
   .like {
-    position: absolute;
-    right: 80%;
+    float: right;
   }
 }
 </style>

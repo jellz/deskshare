@@ -4,12 +4,12 @@
       <div slot="actions">
 
         <div v-if="loggedIn">
-          <ui-button color="primary" @click="newSetup()">Submit New Setup</ui-button>
+          <ui-button color="primary" @click="newSetup()">Submit Your Setup</ui-button>
 
           <ui-button color="primary" class="mysetups">My Setups</ui-button>
         </div>
         <div v-else>
-          <ui-button color="primary" @click="login()">Login/Signup</ui-button>
+          <ui-button color="primary" @click="login()">Login</ui-button>
         </div>
       </div>
   </ui-toolbar>
@@ -34,6 +34,9 @@ export default {
     },
     newSetup() {
       this.$router.push('/newPost');
+    },
+    mySetups() {
+      this.$router.push('/myPosts');
     },
     goHome() {
       this.$router.push('/');

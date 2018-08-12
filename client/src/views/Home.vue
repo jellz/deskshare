@@ -36,9 +36,9 @@ export default {
 
         const compare = (obj1, obj2) => {
           if(obj1.upvotes < obj2.upvotes) {
-            return -1;
-          } else if (obj1.upvotes > obj2.upvotes) {
             return 1;
+          } else if (obj1.upvotes > obj2.upvotes) {
+            return -1;
           }
 
           return 0;

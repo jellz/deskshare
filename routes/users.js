@@ -7,6 +7,12 @@ router.get('/@me', async (req, res) => {
     res.json({ me: await r.table('users').get(parseInt(req.user)).run() });
 });
 
+router.get('/:id', async (req, res) => {
+    const user = await r.table('users').get(parseInt(req.params.id)).run();
+    if (!user) return res.status(404).json({ error: 'Invalid user' });
+    res.json({ user });
+});
+
 router.get('/:id/posts', async (req, res) => {
     if (!req.params.id) return res.sendStatus(400);
     const user = await r.table('users').get(parseInt(req.params.id)).run();

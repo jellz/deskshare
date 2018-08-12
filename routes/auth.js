@@ -11,7 +11,7 @@ router.get('/login', (req, res) => res.redirect(`https://github.com/login/oauth/
 
 router.get('/callback', async (req, res) => {
     const ares = await fetch(`https://github.com/login/oauth/access_token?client_id=${config.githubClient}&client_secret=${config.githubSecret}&code=${encodeURIComponent(req.query.code)}`);
-    const json = await ares.json();
+    const json = queryString.parse(await ares.text());
     const token = json.access_token;
     if (!token) console.error("Did not get token from github", json);
     // this is a tale of a github token

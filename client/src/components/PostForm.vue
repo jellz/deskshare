@@ -1,8 +1,8 @@
 <template>
 <div class="form-display">
     <ui-snackbar v-if="donePublishing">Post published</ui-snackbar>
-    <ui-snackbar v-if="badForm">Check errors before submitting!</ui-snackbar>
-    <ui-textbox label="Title" placeholder="Enter your title" v-model="postTitle" :maxlength="35" :invalid="postTitle.length > 16" error="The title may not be more than 35 characters"></ui-textbox> <!-- min 2 max 35 chars -->
+    <ui-alert :dismissible="false" v-show="badForm" type="error">Check form errors before submitting!</ui-alert>
+    <ui-textbox label="Title" placeholder="Enter your title" v-model="postTitle" :maxlength="35" :invalid="postTitle.length > 35" error="The title may not be more than 35 characters"></ui-textbox> <!-- min 2 max 35 chars -->
     <ui-textbox label="Description" placeholder="Enter a short description" v-model="postDesc" :maxlength="280" :invalid="postDesc.length > 280" error="The description may not be more than 280 characters"></ui-textbox>
     <ui-fileupload color="primary" name="postImages" label="Select files" type="secondary" accept="image/*" multiple></ui-fileupload>
     <br><ui-button color="primary" icon="send" icon-position="left" size="normal" @click="submit" :loading="publishRequestInProgress" raised>Submit</ui-button>
@@ -60,7 +60,7 @@ export default {
                 this.$router.push('/');
             } else {
                 this.badForm = true;
-                this.publishRequestInProgress = true;
+                this.publishRequestInProgress = false;
             }
         }
     }

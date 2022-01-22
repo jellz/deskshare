@@ -15,7 +15,7 @@
     "joi": "^13.6.0",
     "jsonwebtoken": "^8.3.0",
     "morgan": "^1.9.0",
-    "node-fetch": "^2.2.0",
+    "node-fetch": "^3.1.1",
     "query-string": "^6.1.0",
     "rethinkdbdash": "^2.3.31",
     "vue-carousel": "^0.10.0"
